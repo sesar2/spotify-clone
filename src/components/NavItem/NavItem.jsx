@@ -12,9 +12,10 @@ const NavItem = ({name, Icon, target}) => {
                 cursor: 'pointer',
                 '&:hover': {color: 'white'},
                 transition: 'color 0.2s ease-in-out',
-                fontSize: 14
+                fontSize: 18
             }}>
-                {Icon && <Icon sx={{fontSize: 28, marginRight: 1}} />}
+
+                {Icon && <Icon sx={{fontSize: 32, marginRight: 1}} />}
                 {name}
             </Box>
         </NavLink>
