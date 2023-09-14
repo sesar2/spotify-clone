@@ -1,19 +1,25 @@
-import { Box, Avatar, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Box, Avatar, Typography, Skeleton } from '@mui/material';
+import { useEffect, useState, useCallback } from 'react';
+import { useParams, } from 'react-router-dom';
+import SongTable from '../components/SongTable/SongTable';
+
 
 const Playlist = ({ spotifyApi, token }) => {
 	const [playlistInfo, setPlaylistInfo] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const [songs, setSongs] = useState([]);
 	const { id } = useParams();
 
-	const formatSongs = (items) =>
-		items.map((item, i) => {
+	const formatSongs = useCallback(
+		(items) =>
+			items.map((item, i) => {
 			const { track } = item;
 			track.contextUri = `spotify:playlist:${id}`;
 			track.position = i;
 			return track;
-		});
+		}), 
+		[]
+	)
 
 	useEffect(() => {
 		async function getData() {
@@ -26,18 +32,18 @@ const Playlist = ({ spotifyApi, token }) => {
 							? playlistData.body.images[0].url
 							: '/057f3ec7ec8ce899d57c70d131d2dff9.jpg'
 				});
-				console.log(playlistData);
 				//format songs
 				const { items } = playlistData.body.tracks;
 				const formattedSongs = formatSongs(items);
 				setSongs(formattedSongs);
+				setLoading(false);
 			} catch (e) {
 				console.error(e);
 			}
 		}
 
 		getData();
-	}, [id]);
+	}, [id, formatSongs, spotifyApi, token]);
 
 	return (
 		<Box id="Playlist__page" sx={{ bgcolor: '#121212', flex: 1, overflowY: 'auto' }}>
@@ -54,18 +60,43 @@ const Playlist = ({ spotifyApi, token }) => {
 					flexDirection: { xs: 'column', md: 'row' }
 				}}
 			>
-				<Avatar
-					src={playlistInfo?.image}
-					variant="square"
-					sx={{ boxShadow: 15, width: { xs: '100%', md: 235 }, height: { xs: '100%', md: 235 } }}
-				/>
+				{loading ? (
+					<Skeleton
+						sx={{
+							borderRadius: 2,
+							boxShadow: 15,
+							width: { xs: '100%', md: 235 },
+							height: { xs: '100%', md: 235 }
+						}}
+						variant="rectangular"
+					/>
+				) : (
+					<Avatar
+						src={playlistInfo?.image}
+						variant="square"
+						sx={{
+							borderRadius: 2,
+							boxShadow: 15,
+							width: { xs: '100%', md: 235 },
+							height: { xs: '100%', md: 235 }
+						}}
+					/>
+				)}
 				<Box>
-					<Typography sx={{ fontSize: 12, fontWeight: 'bold', color: 'text.primary' }}>Playlist</Typography>
-					<Typography sx={{ fontSize: { xs: 42, md: 72 }, fontWeight: 'bold', color: 'text.primary' }}>
-						{playlistInfo?.name}
-					</Typography>
+					
+						<Typography sx={{ fontSize: 12, fontWeight: 'bold', color: 'text.primary' }}>
+							Playlist
+						</Typography>
+					{loading ? (
+						<Skeleton variant="text" sx={{ width: 300, fontSize: { xs: 42, md: 72 } }} />
+					) : (
+						<Typography sx={{ fontSize: { xs: 42, md: 72 }, fontWeight: 'bold', color: 'text.primary' }}>
+							{playlistInfo?.name}
+						</Typography>
+					)}
 				</Box>
 			</Box>
+			<SongTable songs={songs} loading={loading} spotifyApi={spotifyApi}/>
 		</Box>
 	);
 };

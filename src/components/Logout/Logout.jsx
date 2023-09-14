@@ -25,7 +25,7 @@ const Logout = ({setOpenLogout, handleLogout, openLogout}) => {
 		};
 	}, [openLogout]);
 	return (
-		<div className='logout' style={{ borderRadius: 10, height: 300, width: 700, backgroundColor: '#000000', position: 'absolute', opacity: '95%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 10000, gap: 120 }}>
+		<div className='logout' style={{ borderRadius: 10, height: 300, width: 700, backgroundColor: '#000000', position: 'absolute', opacity: '99%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 10000, gap: 120 }}>
 			<Typography sx={{fontSize: 22}}>Are you sure you want to log out?</Typography>
 			<Box sx={{display: 'flex', alignItems: 'center', gap: 3, }}>
 				<Button href='/' onClick={()=>handleLogout()} variant="contained">Yes</Button>
