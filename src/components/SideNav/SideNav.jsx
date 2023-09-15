@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Box, Divider } from '@mui/material';
 import NavItem from '../NavItem/NavItem';
 import HomeIcon from '@mui/icons-material/Home';
-import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import List from '@mui/icons-material/LibraryMusic';
 import NavPlaylist from '../NavPlaylist/NavPlaylist';
 
 const SideNav = ({ spotifyApi, token }) => {
@@ -47,7 +47,7 @@ const SideNav = ({ spotifyApi, token }) => {
 				bgcolor: '#000000',
 				width: 340,
 				height: '100%',
-				display: 'flex',
+				display: { xs: 'none', md: 'flex'},
 				flexDirection: 'column'
 			}}
 		>
@@ -55,7 +55,6 @@ const SideNav = ({ spotifyApi, token }) => {
 				<img src="/Spotify_Logo.png" alt="" width={'75%'} />
 			</Box>
 			<NavItem name="Home" Icon={HomeIcon} target="/" />
-			<NavItem name="Library" Icon={LibraryMusicIcon} target="/library" />
 			<Box px={3} py={1}>
 				<Divider sx={{ bgcolor: '#FFFFFF40' }} />
 			</Box>

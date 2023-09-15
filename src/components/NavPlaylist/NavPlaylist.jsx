@@ -5,7 +5,7 @@ import './NavPlaylist.css'
 const NavPlaylist = ({name, id, loading, owner, image, }) => {
 
 
-    return <NavLink className='playlist__navlink' to={loading ? '' : `playlist/${id}`} style={{textDecoration: 'none', }}>
+    return <NavLink className='playlist__navlink' to={loading ? '' : `/playlist/${id}`} style={{textDecoration: 'none', }}>
         <Box px={3} py={1} sx={{
                 cursor: 'pointer',
                 '&:hover': {color: 'white'},

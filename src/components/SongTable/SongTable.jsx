@@ -16,6 +16,7 @@ const SongTable = ({ songs, loading, spotifyApi }) => {
 				contextUri={song.contextUri}
 				album={song.album.name}
 				images={song.album.images}
+				key={i}
 				i={i}
 				artist={renderNames(song.artists)}
 				title={song.name}
