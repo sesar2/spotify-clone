@@ -4,7 +4,6 @@ import PlayerControls from '../PlayerControls/PlayerControls';
 import { renderNames } from '../../utils/renderNames';
 
 const PlayerOverlay = ({ active, playerOverlayIsOpen, closeOverlay, progress, current_track, player, duration, is_paused }) => {
-	console.log(playerOverlayIsOpen);
 	return (
 		<Box
 			id="PlayerOverlay"
