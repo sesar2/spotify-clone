@@ -55,6 +55,8 @@ const SideNav = ({ spotifyApi, token }) => {
 				<img src="/Spotify_Logo.png" alt="" width={'75%'} />
 			</Box>
 			<NavItem name="Home" Icon={HomeIcon} target="/" />
+			<NavItem name="Library" Icon={List} target="/library" />
+
 			<Box px={3} py={1}>
 				<Divider sx={{ bgcolor: '#FFFFFF40' }} />
 			</Box>
