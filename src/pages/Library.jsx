@@ -6,7 +6,7 @@ const Library = ({token, spotifyApi}) => {
     const [playlists, setPlaylists] = useState([]);
 	const [loading, setLoading] = useState(true);
    
-    const rederPlaylists = () => {
+    const renderPlaylists = () => {
 		if (loading) {
 			return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,].map((_, i) => (
 				<NavPlaylist key={i} loading={loading} />
@@ -42,7 +42,7 @@ const Library = ({token, spotifyApi}) => {
         <Typography py={3} sx={{color: 'text.primary', fontSize: 30}}>
             Your library
         </Typography>
-        {rederPlaylists()}
+        {renderPlaylists()}
     </Box> );
 }
  
