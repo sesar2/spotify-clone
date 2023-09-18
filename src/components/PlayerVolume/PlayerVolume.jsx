@@ -1,6 +1,6 @@
 import { Slider, Stack, IconButton } from "@mui/material";
 import {VolumeDown, VolumeUp, VolumeOff} from "@mui/icons-material"
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const PlayerVolume = ({spotifyApi, player}) => {
     const [volume, setVolume] = useState(50)
@@ -14,7 +14,7 @@ const PlayerVolume = ({spotifyApi, player}) => {
       }
     const preVol = usePrevious(volume)
 
-    
+
     const handleVolumeChange = async (value) => {
         try {
             await player.setVolume(value / 100)
