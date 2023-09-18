@@ -7,7 +7,7 @@ import NavPlaylist from '../NavPlaylist/NavPlaylist';
 
 const SideNav = ({ spotifyApi, token }) => {
 	const [playlists, setPlaylists] = useState([]);
-	// const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		async function getPlaylists() {
@@ -16,7 +16,7 @@ const SideNav = ({ spotifyApi, token }) => {
 			const data = await spotifyApi.getUserPlaylists();
 			setPlaylists(data.body.items);
 			console.log(data.body.items);
-			// setLoading(false);
+			setLoading(false);
 		}
 
 		getPlaylists();
@@ -60,7 +60,7 @@ const SideNav = ({ spotifyApi, token }) => {
 				<Divider sx={{ bgcolor: '#FFFFFF40' }} />
 			</Box>
 
-			<Box sx={{ overflowY: 'auto', flex: 1 }}>{renderPlaylists()}</Box>
+			<Box sx={{ overflowY: 'auto', flex: 1 }}>{rederPlaylists()}</Box>
 		</Box>
 	);
 };
