@@ -4,14 +4,23 @@ import NavItem from '../NavItem/NavItem';
 import HomeIcon from '@mui/icons-material/Home';
 import List from '@mui/icons-material/LibraryMusic';
 import NavPlaylist from '../NavPlaylist/NavPlaylist';
-import Library from '../../pages/Library';
 
 const SideNav = ({ spotifyApi, token }) => {
 	const [playlists, setPlaylists] = useState([]);
 	const [loading, setLoading] = useState(true);
 
-	
-	
+	useEffect(() => {
+		async function getPlaylists() {
+			if (!spotifyApi) return;
+
+			const data = await spotifyApi.getUserPlaylists();
+			setPlaylists(data.body.items);
+			console.log(data.body.items);
+			setLoading(false);
+		}
+
+		getPlaylists();
+	}, [spotifyApi, token]);
 
 	const rederPlaylists = () => {
 		if (loading) {
@@ -51,7 +60,7 @@ const SideNav = ({ spotifyApi, token }) => {
 				<Divider sx={{ bgcolor: '#FFFFFF40' }} />
 			</Box>
 
-			<Box sx={{ overflowY: 'auto', flex: 1 }}>{<Library spotifyApi={spotifyApi} token={token}/>}</Box>
+			<Box sx={{ overflowY: 'auto', flex: 1 }}>{rederPlaylists()}</Box>
 		</Box>
 	);
 };
