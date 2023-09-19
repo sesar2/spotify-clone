@@ -61,7 +61,7 @@ const SideNav = ({ spotifyApi, token }) => {
 				<Divider sx={{ bgcolor: '#FFFFFF40' }} />
 			</Box>
 
-			<Box sx={{ overflowY: 'auto', flex: 1 }}><Library spotifyApi={spotifyApi} token={token}/></Box>
+			<Box sx={{ overflowY: 'auto', flex: 1 }}>{renderPlaylists()}</Box>
 		</Box>
 	);
 };
