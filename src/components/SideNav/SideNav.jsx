@@ -23,7 +23,7 @@ const SideNav = ({ spotifyApi, token }) => {
 				id={playlist.id}
 				key={i}
 				loading={loading}
-				image={playlist.images.length > 0 ? playlist.images[0].url : '/057f3ec7ec8ce899d57c70d131d2dff9.jpg'}
+				image={ playlist.images[0].url }
 			/>
 		));
 	};
