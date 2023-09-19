@@ -8,7 +8,26 @@ import NavPlaylist from '../NavPlaylist/NavPlaylist';
 const SideNav = ({ spotifyApi, token }) => {
 	const [playlists, setPlaylists] = useState([]);
 	const [loading, setLoading] = useState(true);
+	
+	const renderPlaylists = () => {
+		if (loading) {
+			return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,].map((_, i) => (
+				<NavPlaylist key={i} loading={loading} />
+			));
+		}
 
+		return playlists.map((playlist, i) => (
+			<NavPlaylist
+				owner={playlist.owner.display_name}
+				name={playlist.name}
+				id={playlist.id}
+				key={i}
+				loading={loading}
+				image={playlist.images.length > 0 ? playlist.images[0].url : '/057f3ec7ec8ce899d57c70d131d2dff9.jpg'}
+			/>
+		));
+	};
+	
 	useEffect(() => {
 		async function getPlaylists() {
 			if (!spotifyApi) return;
@@ -22,20 +41,6 @@ const SideNav = ({ spotifyApi, token }) => {
 		getPlaylists();
 	}, [spotifyApi, token]);
 
-	const renderPlaylists = () => {
-
-
-		return playlists.map((playlist, i) => (
-			<NavPlaylist
-				owner={playlist.owner.display_name}
-				name={playlist.name}
-				id={playlist.id}
-				key={i}
-				loading={loading}
-				image={playlist.images.length > 0 ? playlist.images[0].url : '/057f3ec7ec8ce899d57c70d131d2dff9.jpg'}
-			/>
-		));
-	};
 
 	return (
 		<Box
