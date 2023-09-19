@@ -38,8 +38,8 @@ const Library = ({token, spotifyApi}) => {
 		getPlaylists();
 	}, [spotifyApi, token]);
 
-    return ( <Box id='library' px={3} sx={{display: {xs: 'flex', md: 'none'}, bgcolor: '#000000', flex: 1, flexDirection: 'column', overflowY: 'auto'}}>
-        <Typography py={3} sx={{color: 'text.primary', fontSize: 30}}>
+    return ( <Box id='library' px={{xs: 3, md: 0}} sx={{display: 'flex', bgcolor: '#000000', flex: 1, flexDirection: 'column', overflowY: 'auto'}}>
+        <Typography py={3} sx={{color: 'text.primary', fontSize: 30, display:{xs: 'block', md: 'none'}}}>
             Your library
         </Typography>
         {renderPlaylists()}
