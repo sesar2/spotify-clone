@@ -1,11 +1,14 @@
 import { Box, Skeleton, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
 import './NavPlaylist.css'
 
 const NavPlaylist = ({name, id, loading, owner, image, }) => {
+    
 
 
     return <NavLink className='playlist__navlink' to={loading ? '' : `/playlist/${id}`} style={{textDecoration: 'none', }}>
+        
         <Box px={3} py={1} sx={{
                 cursor: 'pointer',
                 '&:hover': {color: 'white'},
@@ -22,6 +25,7 @@ const NavPlaylist = ({name, id, loading, owner, image, }) => {
                 }}>
                 {loading ? <Skeleton sx={{fontSize: 16, width: '120px'}} variant="text"/> : <Typography sx={{fontSize: 16}}>{name}</Typography>}
                 {loading ? <Skeleton sx={{fontSize: 12, width: '50px'}} variant="text"/> : <Typography sx={{fontSize: 12}}>{owner}</Typography>}
+                
                 </Box>
             </Box>
     </NavLink>

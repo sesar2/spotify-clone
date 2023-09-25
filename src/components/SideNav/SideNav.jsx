@@ -9,6 +9,15 @@ import Library from '../../pages/Library';
 const SideNav = ({ spotifyApi, token }) => {
 	const [playlists, setPlaylists] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+          setIsVisible(true);
+        }, 3000); // 5000 milliseconds (5 seconds)
+    
+        return () => clearTimeout(timer); // Clear the timer on unmount
+      }, []);
    
     const renderPlaylists = () => {
 		if (loading) {
@@ -56,11 +65,10 @@ const SideNav = ({ spotifyApi, token }) => {
 				<img src="/Spotify_Logo.png" alt="" width={'75%'} />
 			</Box>
 			<NavItem name="Home" Icon={HomeIcon} target="/" />
-			
 			<Box px={3} py={1}>
 				<Divider sx={{ bgcolor: '#FFFFFF40' }} />
 			</Box>
-
+			<Box px={3}>{loading ? isVisible && <p>If the playlists continue to load endlessly, attempt using the app as a phone with the dev tools (spotifyAPI bug)</p> : <></>}</Box>
 			<Box sx={{ overflowY: 'auto', flex: 1 }}>{renderPlaylists()}</Box>
 		</Box>
 	);
