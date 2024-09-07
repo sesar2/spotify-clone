@@ -23,8 +23,8 @@ const NavPlaylist = ({name, id, loading, owner, image, }) => {
                     display: 'flex',
                     flexDirection: 'column',
                 }}>
-                {loading ? <Skeleton sx={{fontSize: 16, width: '120px'}} variant="text"/> : <Typography sx={{fontSize: 16}}>{name}</Typography>}
-                {loading ? <Skeleton sx={{fontSize: 12, width: '50px'}} variant="text"/> : <Typography sx={{fontSize: 12}}>{owner}</Typography>}
+                {loading ? <Skeleton sx={{fontSize: 16, width: '120px'}} variant="text"/> : <Typography sx={{fontSize: 16, textOverflow: 'ellipsis', textWrap: 'nowrap'}}>{name}</Typography>}
+                {loading ? <Skeleton sx={{fontSize: 12, width: '50px'}} variant="text"/> : <Typography sx={{fontSize: 12, textOverflow: 'ellipsis', textWrap: 'nowrap'}}>{owner}</Typography>}
                 
                 </Box>
             </Box>

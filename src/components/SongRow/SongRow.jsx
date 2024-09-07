@@ -35,19 +35,19 @@ const SongRow = ({ images, title, artist, album, duration, i, loading , spotifyA
 					<Avatar src={image} variant="square" />
 				)}
 				<Box>
-					<Typography sx={{ fontSize: 16, color: 'text.primary' }}>
-						{loading ? <Skeleton variant="text" width={130} height={24} /> : title}
-					</Typography>
-					<Typography sx={{ fontSize: 12, color: 'text.secondary' }}>
+					
+						{loading ? <Skeleton variant="text" width={130} height={24} /> : <Typography sx={{ fontSize: 16, color: 'text.primary',  }}>{title}</Typography>}
+					
+					
 						{' '}
-						{loading ? <Skeleton variant="text" width={50} height={18} /> : artist}
-					</Typography>
+						{loading ? <Skeleton variant="text" width={50} height={18} /> : <Typography sx={{ fontSize: 14, color: 'text.secondary',  textWrap: 'nowrap'}}>{artist}</Typography>}
+					
 				</Box>
 			</Grid>
 			<Grid xs={3} item sx={{ display: { xs: 'none', md: 'flex' } }}>
             {loading ? <Skeleton variant="text" width={50} height={24}/> : album}
 			</Grid>
-			<Grid xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }} item>
+			<Grid xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', textWrap: 'nowrap' }} item>
             {loading ? <Skeleton variant="text" width={26} height={24}/> : duration}
 			</Grid>
 		</Grid>
