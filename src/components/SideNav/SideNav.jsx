@@ -69,7 +69,6 @@ const SideNav = ({ spotifyApi, token, renderPlaylists }) => {
 			<Box px={3} py={1}>
 				<Divider sx={{ bgcolor: '#FFFFFF40' }} />
 			</Box>
-			{/* <Box px={3}>{loading ? isVisible && <p>If the playlists continue to load endlessly, attempt using the app as a phone with the dev tools (spotifyAPI bug)</p> : <></>}</Box> */}
 			<Box sx={{ overflowY: 'auto', flex: 1 }}>{renderPlaylists()}</Box>
 		</Box>
 	);

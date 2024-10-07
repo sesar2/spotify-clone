@@ -18,7 +18,7 @@ const Playlist = ({ spotifyApi, token }) => {
 			track.position = i;
 			return track;
 		}), 
-		[]
+		[id]
 	)
 
 	useEffect(() => {

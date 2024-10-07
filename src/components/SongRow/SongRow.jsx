@@ -4,7 +4,7 @@ import SpotifyWebApi from 'spotify-web-api-node';
 const SongRow = ({ images, title, artist, album, duration, i, loading , spotifyApi, position, contextUri}) => {
 	const image = images?.length > 0 ? images[0].url : null;
 
-
+	
     const onRowClick = async () => {
         const song = {
 			context_uri: contextUri,
