@@ -17,6 +17,7 @@ const PlayerVolume = ({spotifyApi, player}) => {
 
     const handleVolumeChange = async (value) => {
         try {
+            setVolume(value)
             await player.setVolume(value / 100)
         }catch(e){
             console.error(e)
