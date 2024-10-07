@@ -24,7 +24,7 @@ const PlayerVolume = ({spotifyApi, player}) => {
     }
     return ( 
         <Stack direction={'row'} spacing={2} alignItems={'center'} sx={{width: 150, color: 'text.secondary', }}>
-            <IconButton sx={{ color: 'text.primary' }} onClick={()=>{volume > 0 ? setVolume(0) : setVolume(()=>preVol === 0 ? 25 : preVol)}}>
+            <IconButton sx={{ color: 'text.primary' }} onClick={async()=>{volume > 0 ? handleVolumeChange(0) : handleVolumeChange(()=>preVol === 0 ? 2500 : preVol)}}>
             {volume === 0 ? <VolumeOff/> : volume < 50 ? <VolumeDown/> : <VolumeUp/>} 
             </IconButton>
             <Slider min={0} max={100} step={1} value={volume} onChange={(e, value)=>setVolume(value)} onChangeCommitted={async(e, value)=>{handleVolumeChange(value)}}/>   
